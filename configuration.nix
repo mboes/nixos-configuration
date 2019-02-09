@@ -41,8 +41,6 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
-  sound.mediaKeys.enable = true;
-
   services.openssh.enable = true;
 
   services.keybase.enable = true;
