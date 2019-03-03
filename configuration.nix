@@ -174,11 +174,13 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  nix.buildCores = 0;
-  nix.trustedBinaryCaches = [
-    "http://cache.nixos.org"
-    "http://hydra.nixos.org"
-  ];
-  nix.binaryCachePublicKeys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
-  nix.trustedUsers = [ "mboes" ];
+  nix = {
+    useSandbox = true;
+    trustedBinaryCaches = [
+      "http://cache.nixos.org"
+      "http://hydra.nixos.org"
+    ];
+    binaryCachePublicKeys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
+    trustedUsers = [ "mboes" ];
+  };
 }
