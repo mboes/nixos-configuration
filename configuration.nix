@@ -45,6 +45,9 @@
   hardware.pulseaudio.support32Bit = true;
   hardware.u2f.enable = true;
 
+  powerManagement.powertop.enable = true;
+  powerManagement.cpuFreqGovernor = "powersave";
+
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
   programs.slock.enable = true;
