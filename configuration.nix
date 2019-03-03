@@ -33,6 +33,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    gnupg
     udisks
     zsh
   ];
@@ -41,12 +42,17 @@
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
+  hardware.u2f.enable = true;
 
+  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent.enableSSHSupport = true;
   programs.slock.enable = true;
 
   services.openssh.enable = true;
 
   services.keybase.enable = true;
+
+  services.pcscd.enable = true;
 
   services.kmscon = {
     enable = true;
