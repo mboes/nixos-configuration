@@ -39,6 +39,7 @@
   ];
 
   hardware.bluetooth.enable = true;
+  hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
