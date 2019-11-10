@@ -34,7 +34,6 @@
 
   environment.systemPackages = with pkgs; [
     gnupg
-    udisks
     zsh
   ];
 
