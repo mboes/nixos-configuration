@@ -166,5 +166,9 @@
     ];
     binaryCachePublicKeys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
     trustedUsers = [ "mboes" ];
+    buildMachines = secrets.buildMachines;
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
   };
 }
