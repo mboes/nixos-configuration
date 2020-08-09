@@ -25,9 +25,9 @@
   console.keyMap = "dvorak";
   i18n.defaultLocale = "fr_FR.UTF-8";
 
-  time.timeZone = "Europe/Paris";
-  location.latitude = 49.8;
-  location.longitude = 2.3;
+  time.timeZone = secrets.timezone;
+  location.latitude = secrets.latitude;
+  location.longitude = secrets.longitude;
 
   system.stateVersion = "19.03";
 
