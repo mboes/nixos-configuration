@@ -134,10 +134,14 @@
     fonts = with pkgs; [
       #corefonts
       dejavu_fonts
+      font-awesome
+      fira-code
       inconsolata
+      iosevka
       noto-fonts
       noto-fonts-emoji
       orbitron
+      roboto
       terminus_font
       ubuntu_font_family
     ];
