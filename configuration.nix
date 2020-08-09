@@ -8,6 +8,9 @@
 
   boot = {
     cleanTmpDir = true;
+    kernel.sysctl = {
+      "net.ipv6.conf.all.use_tempaddr" = 2;
+    };
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = [ "exfat" "zfs" ];
@@ -51,7 +54,6 @@
       gnupg
       zsh
     ];
-
   };
 
   hardware.bluetooth.enable = true;
