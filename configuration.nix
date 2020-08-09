@@ -22,23 +22,43 @@
     extraHosts = "127.0.0.1 ${hostName}";
   };
 
-  i18n = {
-    consoleKeyMap = "dvorak";
-    defaultLocale = "fr_FR.UTF-8";
-  };
+  console.keyMap = "dvorak";
+  i18n.defaultLocale = "fr_FR.UTF-8";
 
   time.timeZone = "Europe/Paris";
+  location.latitude = 49.8;
+  location.longitude = 2.3;
 
-  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "19.03";
 
-  environment.systemPackages = with pkgs; [
-    gnupg
-    zsh
-  ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [(self: super: {
+      redshift = super.redshift.overrideAttrs (old: {
+        name = "redshift-wayland";
+        src = self.fetchFromGitHub {
+          owner = "minus7";
+          repo = "redshift";
+          rev = "420d0d534c9f03abc4d634a7d3d7629caf29b4b6";
+          sha256 = "12dwb96i4pbny5s64k6k4f8k936xa41zvcjhv54wv0ax471ymls7";
+        };
+      });
+    })];
+    };
+
+  environment = {
+    systemPackages = with pkgs; [
+      gnupg
+      zsh
+    ];
+
+  };
 
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
+  hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.u2f.enable = true;
@@ -49,38 +69,38 @@
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
   programs.slock.enable = true;
-
-  services.openssh.enable = true;
-
-  services.keybase.enable = true;
-
-  services.pcscd.enable = true;
-
-  services.kmscon = {
+  programs.zsh.enable = true;
+  programs.light.enable = true;
+  programs.sway = {
     enable = true;
-    extraConfig = ''
-      font-name=Inconsolata
-      font-dpi=276
-      xkb-layout=us
-      xkb-variant=dvorak
-      '';
-    hwRender = true;
+    extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
+    extraSessionCommands = ''
+      export GDK_DPI_SCALING=3
+    '';
   };
 
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
-
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    publish.enable = true;
-    publish.userServices = true;
-  };
-
-  services.redshift = {
-    enable = true;
-    latitude = "49.8";
-    longitude = "2.3";
+  services = {
+    emacs = {
+      enable = true;
+      defaultEditor = true;
+    };
+    fwupd.enable = true;
+    openssh.enable = true;
+    pcscd.enable = true;
+    printing.enable = true;
+    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      publish.enable = true;
+      publish.userServices = true;
+    };
+    redshift = {
+      enable = true;
+      # brightness.night = "0.2";
+      extraOptions = [ "-m" "wayland" ];
+    };
+    upower.enable = true;
   };
 
   systemd.timers.suspend-on-low-battery = {
@@ -103,62 +123,6 @@
 
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "zfs";
-
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "intel" ];
-
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.extraPackages = self: [ self.xmonad-contrib ];
-    windowManager.default = "xmonad";
-    desktopManager.default = "none";
-
-    displayManager.sddm = {
-      enable = true;
-      # autoLogin.enable = true;
-      # autoLogin.user = "mboes";
-    };
-    displayManager.sessionCommands = ''
-      export XCURSOR_PATH=${pkgs.gnome3.adwaita-icon-theme}/share/icons
-      conky -d
-      urxvtd -q -f -o
-      xmodmap .Xmodmap
-      xsetroot -solid black
-      xset r rate 200 40
-      xset b off
-      '';
-
-    synaptics.enable = true;
-    synaptics.twoFingerScroll = true;
-    synaptics.tapButtons = false;
-    synaptics.additionalOptions = ''
-      Option "CoastingFriction" "30"
-      Option "VertScrollDelta" "-243"
-      Option "HorizScrollDelta" "-243"
-      '';
-
-    modules = with pkgs; [
-      xf86_input_wacom
-    ];
-
-    layout = "us,gr";
-    xkbVariant = "dvorak,extended";
-    xkbOptions = "terminate:ctrl_alt_bksp,ctrl:nocaps,eurosign:e,altwin:swap_alt_win,grp:shifts_toggle,lv3:lalt_switch,eurosign:e";
-
-    config = ''
-      Section "InputClass"
-          Identifier "touchpad catchall"
-          Driver "synaptics"
-          MatchIsTouchpad "on"
-          MatchDevicePath "/dev/input/event*"
-          Option "CoastingFriction"       "30"
-          Option "VertScrollDelta"        "-243"
-          Option "HorizScrollDelta"       "-243"
-      EndSection
-    '';
-
-    dpi = 276;
-  };
 
   fonts = {
     fontconfig = {
