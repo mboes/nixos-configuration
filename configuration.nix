@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+let secrets = import ./secrets.nix; in
 {
   imports =
     [ # Include the results of the hardware scan.
