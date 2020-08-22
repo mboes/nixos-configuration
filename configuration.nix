@@ -104,6 +104,17 @@ let secrets = import ./secrets.nix; in
       extraOptions = [ "-m" "wayland" ];
     };
     upower.enable = true;
+    xserver = {
+      enable = true;
+      displayManager.defaultSession = "sway";
+      displayManager.lightdm = {
+        enable = true;
+        greeter.enable = false;
+        autoLogin.enable = true;
+        autoLogin.timeout = 0;
+        autoLogin.user = "mboes";
+      };
+    };
   };
 
   systemd.timers.suspend-on-low-battery = {
