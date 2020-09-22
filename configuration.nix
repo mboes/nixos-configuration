@@ -23,6 +23,7 @@ let secrets = import ./secrets.nix; in
     hostName = "cayenne";
     hostId = "493dffe1";
     networkmanager.enable = true;
+    networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
     extraHosts = "127.0.0.1 ${hostName}";
   };
 
