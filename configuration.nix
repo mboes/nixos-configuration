@@ -108,6 +108,8 @@ let secrets = import ./secrets.nix; in
     xserver = {
       enable = true;
       displayManager.defaultSession = "sway";
+      # Sway will do this.
+      startDbusSession = false;
       displayManager.lightdm = {
         enable = true;
         greeter.enable = false;
