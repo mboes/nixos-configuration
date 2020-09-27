@@ -90,6 +90,9 @@ let secrets = import ./secrets.nix; in
       # brightness.night = "0.2";
       extraOptions = [ "-m" "wayland" ];
     };
+    udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c068", TEST=="power/control", ATTR{power/control}="on"
+    '';
     upower.enable = true;
     xserver = {
       enable = true;
