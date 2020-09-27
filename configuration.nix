@@ -2,11 +2,6 @@
 
 let secrets = import ./secrets.nix; in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   boot = {
     cleanTmpDir = true;
     kernel.sysctl = {
@@ -20,11 +15,8 @@ let secrets = import ./secrets.nix; in
   };
 
   networking = rec {
-    hostName = "cayenne";
-    hostId = "493dffe1";
     networkmanager.enable = true;
     networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
-    extraHosts = "127.0.0.1 ${hostName}";
   };
 
   console.keyMap = "dvorak";
@@ -33,8 +25,6 @@ let secrets = import ./secrets.nix; in
   time.timeZone = secrets.timezone;
   location.latitude = secrets.latitude;
   location.longitude = secrets.longitude;
-
-  system.stateVersion = "19.03";
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -68,7 +58,6 @@ let secrets = import ./secrets.nix; in
   hardware.u2f.enable = true;
 
   powerManagement.powertop.enable = true;
-  powerManagement.cpuFreqGovernor = "powersave";
 
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
@@ -78,9 +67,6 @@ let secrets = import ./secrets.nix; in
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
-    extraSessionCommands = ''
-      export GDK_DPI_SCALING=3
-    '';
   };
 
   services = {

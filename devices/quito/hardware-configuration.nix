@@ -9,9 +9,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.blacklistedKernelModules = [ "psmouse" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -19,7 +18,7 @@
       fsType = "zfs";
     };
   fileSystems."/boot" =
-    { device = "/dev/nvme0n1p1";
+    { device = "/dev/nvme0n1p2";
       fsType = "vfat";
     };
   fileSystems."/home" =
@@ -27,8 +26,10 @@
       fsType = "zfs";
     };
 
-  swapDevices = [ ];
+  networking.hostName = "quito";
+  networking.hostId = "44b74a34";
+  
+  nix.maxJobs = lib.mkDefault 24;
 
-  nix.maxJobs = lib.mkDefault 8;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  system.stateVersion = "20.03";
 }
