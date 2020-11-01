@@ -91,7 +91,8 @@ let secrets = import ./secrets.nix; in
       extraOptions = [ "-m" "wayland" ];
     };
     udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c068", TEST=="power/control", ATTR{power/control}="on"
+      # Workaround USB suspend not working for Logitech G500 mouse.
+      SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c068", ATTR{power/autosuspend}="-1"
     '';
     upower.enable = true;
     xserver = {
