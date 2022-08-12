@@ -97,14 +97,14 @@ let secrets = import ./secrets.nix; in
     xserver = {
       enable = true;
       displayManager.defaultSession = "sway";
-      # Sway will do this.
-      startDbusSession = false;
-      displayManager.lightdm = {
-        enable = true;
-        greeter.enable = false;
+      displayManager = {
         autoLogin.enable = true;
-        autoLogin.timeout = 0;
         autoLogin.user = "mboes";
+        lightdm = {
+          enable = true;
+          greeter.enable = false;
+          autoLogin.timeout = 0;
+        };
       };
     };
   };
