@@ -55,7 +55,6 @@ let secrets = import ./secrets.nix; in
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
-  hardware.u2f.enable = true;
 
   powerManagement.powertop.enable = true;
 
