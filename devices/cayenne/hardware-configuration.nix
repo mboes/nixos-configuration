@@ -34,9 +34,5 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   system.stateVersion = "19.03";
-
-  programs.sway.extraSessionCommands = ''
-    export GDK_DPI_SCALING=3
-  '';
 }
 

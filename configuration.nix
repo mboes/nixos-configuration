@@ -133,7 +133,6 @@ let secrets = import ./secrets.nix; in
   fonts = {
     fontconfig = {
       enable = true;
-      dpi = 276;
     };
     enableFontDir = true;
     enableGhostscriptFonts = true;
