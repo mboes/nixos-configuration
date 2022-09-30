@@ -131,11 +131,6 @@ let secrets = import ./secrets.nix; in
   virtualisation.docker.storageDriver = "zfs";
 
   fonts = {
-    fontconfig = {
-      enable = true;
-    };
-    fontDir.enable = true;
-    enableGhostscriptFonts = true;
     fonts = with pkgs; [
       #corefonts
       dejavu_fonts
