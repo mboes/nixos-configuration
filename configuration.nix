@@ -136,6 +136,7 @@ let secrets = import ./secrets.nix; in
       dejavu_fonts
       font-awesome
       fira-code
+      fira-code-symbols
       inconsolata
       iosevka
       noto-fonts
