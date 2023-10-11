@@ -50,8 +50,6 @@ let secrets = import ./secrets.nix; in
 
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.vaapiIntel ];
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
