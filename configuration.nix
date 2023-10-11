@@ -51,8 +51,6 @@ let secrets = import ./secrets.nix; in
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl.driSupport32Bit = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
 
   powerManagement.powertop.enable = true;
 
@@ -81,6 +79,12 @@ let secrets = import ./secrets.nix; in
       nssmdns = true;
       publish.enable = true;
       publish.userServices = true;
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
     redshift = {
       enable = true;
@@ -146,6 +150,7 @@ let secrets = import ./secrets.nix; in
     ];
   };
 
+  security.rtkit.enable = true;
   security.sudo.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
