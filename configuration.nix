@@ -135,9 +135,8 @@ let secrets = import ./secrets.nix; in
   virtualisation.docker.storageDriver = "zfs";
 
   fonts = {
+    enableDefaultFonts = true;
     fonts = with pkgs; [
-      #corefonts
-      dejavu_fonts
       font-awesome
       fira-code
       fira-code-symbols
@@ -148,7 +147,6 @@ let secrets = import ./secrets.nix; in
       orbitron
       roboto
       terminus_font
-      ubuntu_font_family
     ];
   };
 
