@@ -94,6 +94,8 @@ let secrets = import ./secrets.nix; in
     udev.extraRules = ''
       # Workaround USB suspend not working for Logitech G500 mouse.
       SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c068", ATTR{power/autosuspend}="-1"
+      # Prevent GoPro from connecting. Should only charge.
+      SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
     upower.enable = true;
     xserver = {
