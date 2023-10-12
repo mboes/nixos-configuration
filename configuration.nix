@@ -165,14 +165,15 @@ let secrets = import ./secrets.nix; in
   };
 
   nix = {
-    useSandbox = true;
-    trustedBinaryCaches = [
-      "http://cache.nixos.org"
-      "http://hydra.nixos.org"
-    ];
-    binaryCachePublicKeys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
-    trustedUsers = [ "mboes" ];
     buildMachines = secrets.buildMachines;
+    settings = {
+      trusted-substituters = [
+        "http://cache.nixos.org"
+        "http://hydra.nixos.org"
+      ];
+      trusted-public-keys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
+      trusted-users = [ "mboes" ];
+    };
     extraOptions = ''
       builders-use-substitutes = true
     '';
