@@ -48,6 +48,7 @@ let secrets = import ./secrets.nix; in
     ];
   };
 
+  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl.driSupport32Bit = true;
