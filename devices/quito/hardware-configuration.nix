@@ -28,5 +28,5 @@
   networking.hostName = "quito";
   networking.hostId = "44b74a34";
   
-  system.stateVersion = "20.03";
+  system.stateVersion = "22.05";
 }
