@@ -11,7 +11,6 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.blacklistedKernelModules = [ "psmouse" ];
-  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "tank/root";
@@ -29,7 +28,5 @@
   networking.hostName = "quito";
   networking.hostId = "44b74a34";
   
-  nix.maxJobs = lib.mkDefault 24;
-
   system.stateVersion = "20.03";
 }
