@@ -131,8 +131,17 @@ let secrets = import ./secrets.nix; in
       script = "${battery-level-sufficient}/bin/battery-level-sufficient";
     };
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "zfs";
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.extraPackages = [ pkgs.zfs ];
+  virtualisation.containers.storage.settings = {
+    storage = {
+      driver = "zfs";
+      graphroot = "/var/lib/containers/storage";
+      runroot = "/run/containers/storage";
+    };
+  };
 
   fonts = {
     enableDefaultFonts = true;
@@ -158,7 +167,7 @@ let secrets = import ./secrets.nix; in
     description = "Mathieu Boespflug";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "docker" "vboxusers" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "video" "docker" "podman" "vboxusers" "networkmanager" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
