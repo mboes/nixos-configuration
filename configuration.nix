@@ -3,7 +3,7 @@
 let secrets = import ./secrets.nix; in
 {
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     kernel.sysctl = {
       "net.ipv6.conf.all.use_tempaddr" = 2;
     };
@@ -145,8 +145,8 @@ let secrets = import ./secrets.nix; in
   };
 
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       font-awesome
       fira-code
       fira-code-symbols
