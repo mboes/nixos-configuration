@@ -10,7 +10,6 @@ let secrets = import ./secrets.nix; in
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = [ "exfat" "zfs" ];
-    zfs.enableUnstable = true;
     zfs.requestEncryptionCredentials = true;
   };
 
