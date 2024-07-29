@@ -76,7 +76,7 @@ let secrets = import ./secrets.nix; in
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish.enable = true;
       publish.userServices = true;
     };
@@ -98,13 +98,15 @@ let secrets = import ./secrets.nix; in
       SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
     upower.enable = true;
+    displayManager = {
+      defaultSession = "sway";
+      autoLogin.enable = true;
+      autoLogin.user = "mboes";
+    };
     xserver = {
       enable = true;
-      displayManager.defaultSession = "sway";
       displayManager = {
-        autoLogin.enable = true;
-        autoLogin.user = "mboes";
-        lightdm = {
+       lightdm = {
           enable = true;
           greeter.enable = false;
           autoLogin.timeout = 0;
