@@ -46,6 +46,7 @@ let secrets = import ./secrets.nix; in
       zsh
     ];
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
