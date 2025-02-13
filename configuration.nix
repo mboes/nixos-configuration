@@ -55,14 +55,16 @@ let secrets = import ./secrets.nix; in
 
   powerManagement.powertop.enable = true;
 
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
-  programs.slock.enable = true;
-  programs.zsh.enable = true;
-  programs.light.enable = true;
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
+  programs = {
+    gnupg.agent.enable = true;
+    gnupg.agent.enableSSHSupport = true;
+    slock.enable = true;
+    zsh.enable = true;
+    light.enable = true;
+    sway = {
+      enable = true;
+      extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
+    };
   };
 
   services = {
