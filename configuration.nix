@@ -157,6 +157,7 @@ let secrets = import ./secrets.nix; in
     };
     extraOptions = ''
       builders-use-substitutes = true
+      use-xdg-base-directories = true
     '';
   };
 }
