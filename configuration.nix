@@ -41,8 +41,6 @@ let secrets = import ./secrets.nix; in
   powerManagement.powertop.enable = true;
 
   programs = {
-    gnupg.agent.enable = true;
-    gnupg.agent.enableSSHSupport = true;
     zsh.enable = true;
     light.enable = true;
     hyprland = {
