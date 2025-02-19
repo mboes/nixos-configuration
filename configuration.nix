@@ -154,7 +154,6 @@ let secrets = import ./secrets.nix; in
         "http://hydra.nixos.org"
       ];
       trusted-public-keys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
-      trusted-users = [ "mboes" ];
     };
     extraOptions = ''
       builders-use-substitutes = true
