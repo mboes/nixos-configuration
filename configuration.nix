@@ -51,21 +51,17 @@ let secrets = import ./secrets.nix; in
   };
 
   services = {
-    emacs = {
-      enable = true;
-      defaultEditor = true;
-    };
-    fwupd.enable = true;
-    openssh.enable = true;
-    pcscd.enable = true;
-    printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     avahi = {
       enable = true;
       nssmdns4 = true;
       publish.enable = true;
       publish.userServices = true;
     };
+    emacs = {
+      enable = true;
+      defaultEditor = true;
+    };
+    fwupd.enable = true;
     greetd = {
       enable = true;
       settings = rec {
@@ -77,6 +73,10 @@ let secrets = import ./secrets.nix; in
       };
     };
     hypridle.enable = true;
+    openssh.enable = true;
+    pcscd.enable = true;
+    printing.enable = true;
+    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     pipewire = {
       enable = true;
       alsa.enable = true;
