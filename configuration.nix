@@ -41,13 +41,25 @@ let secrets = import ./secrets.nix; in
   powerManagement.powertop.enable = true;
 
   programs = {
-    zsh.enable = true;
-    light.enable = true;
+    _1password.enable = true;
+    chromium.enable = true;
+    direnv.enable = true;
+    direnv.enableZshIntegration = true;
+    evince.enable = true;
+    firefox.enable = true;
+    git.enable = true;
+    git.lfs.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
     };
     hyprlock.enable = true;
+    light.enable = true;
+    light.brightnessKeys.enable = true;
+    mosh.enable = true;
+    vim.enable = true;
+    waybar.enable = true;
+    zsh.enable = true;
   };
 
   services = {
@@ -90,6 +102,7 @@ let secrets = import ./secrets.nix; in
       # Prevent GoPro from connecting. Should only charge.
       SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
+    udisks2.enable = true;
     upower.enable = true;
   };
 
