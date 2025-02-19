@@ -60,6 +60,7 @@ let secrets = import ./secrets.nix; in
     emacs = {
       enable = true;
       defaultEditor = true;
+      package = pkgs.emacs30-pgtk;
     };
     fwupd.enable = true;
     greetd = {
