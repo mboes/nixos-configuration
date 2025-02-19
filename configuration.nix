@@ -31,10 +31,7 @@ let secrets = import ./secrets.nix; in
 
   environment = {
     sessionVariables.NIXOS_OZONE_WL = 1;
-    systemPackages = with pkgs; [
-      gnupg
-      zsh
-    ];
+    systemPackages = import ./system-packages.nix { inherit pkgs; };
   };
 
   services.blueman.enable = true;
