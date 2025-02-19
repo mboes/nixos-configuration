@@ -40,7 +40,6 @@ let secrets = import ./secrets.nix; in
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
-  hardware.graphics.driSupport32Bit = true;
 
   powerManagement.powertop.enable = true;
 
