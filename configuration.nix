@@ -27,18 +27,7 @@ let secrets = import ./secrets.nix; in
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [(self: super: {
-      redshift = super.redshift.overrideAttrs (old: {
-        name = "redshift-wayland";
-        src = self.fetchFromGitHub {
-          owner = "minus7";
-          repo = "redshift";
-          rev = "420d0d534c9f03abc4d634a7d3d7629caf29b4b6";
-          sha256 = "12dwb96i4pbny5s64k6k4f8k936xa41zvcjhv54wv0ax471ymls7";
-        };
-      });
-    })];
-    };
+  };
 
   environment = {
     sessionVariables.NIXOS_OZONE_WL = 1;
@@ -58,13 +47,13 @@ let secrets = import ./secrets.nix; in
   programs = {
     gnupg.agent.enable = true;
     gnupg.agent.enableSSHSupport = true;
-    slock.enable = true;
     zsh.enable = true;
     light.enable = true;
-    sway = {
+    hyprland = {
       enable = true;
-      extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
+      withUWSM = true;
     };
+    hyprlock.enable = true;
   };
 
   services = {
@@ -83,16 +72,22 @@ let secrets = import ./secrets.nix; in
       publish.enable = true;
       publish.userServices = true;
     };
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "Hyprland";
+          user = "mboes";
+        };
+        default_session = initial_session;
+      };
+    };
+    hypridle.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-    };
-    redshift = {
-      enable = true;
-      # brightness.night = "0.2";
-      extraOptions = [ "-m" "wayland" ];
     };
     udev.extraRules = ''
       # Workaround USB suspend not working for Logitech G500 mouse.
@@ -101,21 +96,6 @@ let secrets = import ./secrets.nix; in
       SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
     upower.enable = true;
-    displayManager = {
-      defaultSession = "sway";
-      autoLogin.enable = true;
-      autoLogin.user = "mboes";
-    };
-    xserver = {
-      enable = true;
-      displayManager = {
-       lightdm = {
-          enable = true;
-          greeter.enable = false;
-          autoLogin.timeout = 0;
-        };
-      };
-    };
   };
 
   systemd.timers.suspend-on-low-battery = {
