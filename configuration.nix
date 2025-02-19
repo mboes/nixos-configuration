@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let secrets = import ./secrets.nix; in
 {
@@ -158,6 +158,7 @@ let secrets = import ./secrets.nix; in
       ];
     };
     extraOptions = ''
+      experimental-features = nix-command flakes
       builders-use-substitutes = true
       use-xdg-base-directories = true
     '';

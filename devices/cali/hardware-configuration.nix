@@ -45,6 +45,8 @@
   networking.hostName = "cali";
   networking.hostId = "5c17e9f9";
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.opengl.extraPackages = [ pkgs.intel-media-driver ];
