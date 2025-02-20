@@ -74,7 +74,6 @@ let secrets = import ./secrets.nix; in
     };
     fwupd.enable = true;
     openssh.enable = true;
-    pcscd.enable = true;
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     resolved.enable = true;
