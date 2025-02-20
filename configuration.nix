@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let secrets = import ./secrets.nix; in
 {
@@ -29,71 +29,75 @@ let secrets = import ./secrets.nix; in
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [(self: super: {
-      redshift = super.redshift.overrideAttrs (old: {
-        name = "redshift-wayland";
-        src = self.fetchFromGitHub {
-          owner = "minus7";
-          repo = "redshift";
-          rev = "420d0d534c9f03abc4d634a7d3d7629caf29b4b6";
-          sha256 = "12dwb96i4pbny5s64k6k4f8k936xa41zvcjhv54wv0ax471ymls7";
-        };
-      });
-    })];
-    };
+  };
 
   environment = {
-    systemPackages = with pkgs; [
-      gnupg
-      zsh
-    ];
+    sessionVariables.NIXOS_OZONE_WL = 1;
+    systemPackages = import ./system-packages.nix { inherit pkgs; };
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
-  hardware.opengl.driSupport32Bit = true;
 
   powerManagement.powertop.enable = true;
 
-  programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
-  programs.slock.enable = true;
-  programs.zsh.enable = true;
-  programs.light.enable = true;
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [ kitty swaylock swayidle xwayland dmenu waybar mako ];
+  programs = {
+    _1password.enable = true;
+    chromium.enable = true;
+    direnv.enable = true;
+    direnv.enableZshIntegration = true;
+    evince.enable = true;
+    firefox.enable = true;
+    git.enable = true;
+    git.lfs.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    hyprlock.enable = true;
+    light.enable = true;
+    light.brightnessKeys.enable = true;
+    mosh.enable = true;
+    vim.enable = true;
+    waybar.enable = true;
+    zsh.enable = true;
   };
 
   services = {
     blueman.enable = true;
-    emacs = {
-      enable = true;
-      defaultEditor = true;
-    };
-    fwupd.enable = true;
-    openssh.enable = true;
-    printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
-    resolved.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
       publish.enable = true;
       publish.userServices = true;
     };
+    emacs = {
+      enable = true;
+      defaultEditor = true;
+      package = pkgs.emacs30-pgtk;
+    };
+    fwupd.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "Hyprland";
+          user = "mboes";
+        };
+        default_session = initial_session;
+      };
+    };
+    hypridle.enable = true;
+    openssh.enable = true;
+    printing.enable = true;
+    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    redshift = {
-      enable = true;
-      # brightness.night = "0.2";
-      extraOptions = [ "-m" "wayland" ];
-    };
+    resolved.enable = true;
     udev.extraRules = ''
       # Workaround USB suspend not working for Logitech G500 mouse.
       SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c068", ATTR{power/autosuspend}="-1"
@@ -102,40 +106,7 @@ let secrets = import ./secrets.nix; in
     '';
     udisks2.enable = true;
     upower.enable = true;
-    displayManager = {
-      defaultSession = "sway";
-      autoLogin.enable = true;
-      autoLogin.user = "mboes";
-    };
-    xserver = {
-      enable = true;
-      displayManager = {
-       lightdm = {
-          enable = true;
-          greeter.enable = false;
-          autoLogin.timeout = 0;
-        };
-      };
-    };
   };
-
-  systemd.timers.suspend-on-low-battery = {
-    wantedBy = [ "multi-user.target" ];
-    timerConfig = {
-      OnUnitActiveSec = "120";
-    };
-  };
-  systemd.services.suspend-on-low-battery =
-    let battery-level-sufficient =
-          pkgs.writeShellScriptBin "battery-level-sufficient" ''
-            test "$(cat /sys/class/power_supply/BAT1/status)" != Discharging \
-              || test "$(cat /sys/class/power_supply/BAT1/capacity)" -ge 10
-            '';
-    in
-    { serviceConfig = { Type = "oneshot"; };
-      onFailure = [ "suspend.target" ];
-      script = "${battery-level-sufficient}/bin/battery-level-sufficient";
-    };
 
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
@@ -184,11 +155,14 @@ let secrets = import ./secrets.nix; in
         "http://cache.nixos.org"
         "http://hydra.nixos.org"
       ];
-      trusted-public-keys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
-      trusted-users = [ "mboes" ];
+      trusted-public-keys = [
+        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+      ];
     };
     extraOptions = ''
+      experimental-features = nix-command flakes
       builders-use-substitutes = true
+      use-xdg-base-directories = true
     '';
   };
 }
