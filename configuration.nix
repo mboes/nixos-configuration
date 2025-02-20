@@ -43,7 +43,6 @@ let secrets = import ./secrets.nix; in
 
   programs = {
     _1password.enable = true;
-    chromium.enable = true;
     direnv.enable = true;
     direnv.enableZshIntegration = true;
     evince.enable = true;

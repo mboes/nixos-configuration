@@ -3,6 +3,7 @@
 with pkgs;
 [ baobab
   btop
+  chromium
   curl
   direnv
   dstat
