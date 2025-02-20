@@ -3,6 +3,7 @@
 with pkgs;
 [ baobab
   btop
+  catppuccin-cursors.latteDark
   chromium
   curl
   direnv
