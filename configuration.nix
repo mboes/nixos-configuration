@@ -55,6 +55,9 @@ let secrets = import ./secrets.nix; in
   hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl.driSupport32Bit = true;
 
+  hardware.sane.enable = true;
+  hardware.sane.drivers.scanSnap.enable = true;
+
   powerManagement.powertop.enable = true;
 
   programs.gnupg.agent.enable = true;
@@ -101,6 +104,7 @@ let secrets = import ./secrets.nix; in
       # Prevent GoPro from connecting. Should only charge.
       SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
+    udev.packages = [ pkgs.sane-airscan ];
     upower.enable = true;
     displayManager = {
       defaultSession = "sway";
@@ -173,7 +177,7 @@ let secrets = import ./secrets.nix; in
     description = "Mathieu Boespflug";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "docker" "podman" "vboxusers" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "video" "docker" "podman" "vboxusers" "networkmanager" "scanner" "lp" ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
