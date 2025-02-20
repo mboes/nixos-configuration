@@ -50,7 +50,6 @@ let secrets = import ./secrets.nix; in
   };
   environment.sessionVariables.NIXOS_OZONE_WL = 1;
 
-  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.opengl.driSupport32Bit = true;
@@ -68,6 +67,7 @@ let secrets = import ./secrets.nix; in
   };
 
   services = {
+    blueman.enable = true;
     emacs = {
       enable = true;
       defaultEditor = true;
