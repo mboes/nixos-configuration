@@ -14,8 +14,10 @@ let secrets = import ./secrets.nix; in
   };
 
   networking = rec {
-    networkmanager.enable = true;
-    networkmanager.insertNameservers = ["1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001"];
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
   };
 
   console.keyMap = "dvorak";
@@ -75,6 +77,7 @@ let secrets = import ./secrets.nix; in
     pcscd.enable = true;
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    resolved.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
