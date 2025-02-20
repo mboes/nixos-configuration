@@ -1,7 +1,8 @@
 { pkgs }:
 
 with pkgs;
-[ baobab
+[ adwaita-icon-theme
+  baobab
   btop
   catppuccin-cursors.latteDark
   chromium
