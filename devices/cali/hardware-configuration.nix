@@ -48,4 +48,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.opengl.extraPackages = [ pkgs.intel-media-driver ];
+  hardware.sane.enable = true;
+  hardware.sane.drivers.scanSnap.enable = true;
+  services.udev.packages = [ pkgs.sane-airscan ];
 }
