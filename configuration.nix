@@ -122,11 +122,12 @@ let secrets = import ./secrets.nix; in
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      font-awesome
       fira-code
       fira-code-symbols
+      font-awesome
       inconsolata
       iosevka
+      jetbrains-mono
       noto-fonts
       noto-fonts-emoji
       orbitron
