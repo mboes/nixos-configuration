@@ -8,6 +8,7 @@ with pkgs;
   catppuccin-cursors.latteDark
   chromium
   curl
+  delta
   direnv
   dstat
   gh
