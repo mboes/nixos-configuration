@@ -3,6 +3,7 @@
 with pkgs;
 [ adwaita-icon-theme
   baobab
+  bemoji
   btop
   catppuccin-cursors.latteDark
   chromium
