@@ -11,6 +11,8 @@ $ cd /path/to/this/repo
 $ sudo nixos-rebuild switch ".#$HOST"
 ```
 
+You'll need to define your own `secrets.nix`, which is not checked in.
+
 This repository is a Nix [flake][flakes].
 
 [flakes]: https://wiki.nixos.org/wiki/Flakes
