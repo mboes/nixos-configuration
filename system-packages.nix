@@ -18,6 +18,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   gh
   ghostty
   gimp
+  gnome-calculator
   grim
   grimblast
   (hunspellWithDicts dicts)
