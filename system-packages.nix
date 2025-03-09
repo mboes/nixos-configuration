@@ -10,8 +10,10 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   chromium
   curl
   delta
+  dig
   direnv
   dstat
+  file
   gh
   ghostty
   gimp
