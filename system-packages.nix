@@ -4,6 +4,7 @@ with pkgs;
 let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
 [ adwaita-icon-theme
   baobab
+  bat
   bemoji
   bibata-cursors
   btop
@@ -14,7 +15,9 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   dig
   direnv
   dstat
+  fd
   file
+  fzf
   gh
   ghostty
   gimp
@@ -32,6 +35,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   pciutils
   powertop
   pwgen
+  ripgrep
   swaynotificationcenter
   tmate
   tofi
@@ -42,4 +46,5 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   whois
   wl-clipboard
   zotero
+  zoxide
 ]
