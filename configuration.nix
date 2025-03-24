@@ -59,7 +59,11 @@ let secrets = import ./secrets.nix; in
     mosh.enable = true;
     vim.enable = true;
     waybar.enable = true;
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
   };
 
   services = {
