@@ -65,10 +65,14 @@ let secrets = import ./secrets.nix; in
     waybar.enable = true;
     zsh = {
       enable = true;
+      enableGlobalCompInit = false;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       promptInit = ''
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      '';
+      shellInit = ''
+        export ZDOTDIR=''${XDG_CONFIG_HOME:-$HOME/.config}/zsh
       '';
     };
   };
