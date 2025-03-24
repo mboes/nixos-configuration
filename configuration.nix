@@ -145,7 +145,7 @@ let secrets = import ./secrets.nix; in
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "audio" "video" "docker" "podman" "vboxusers" "networkmanager" "scanner" "lp" ];
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = pkgs.zsh;
   };
 
   nix = {
