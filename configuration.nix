@@ -47,6 +47,10 @@ let secrets = import ./secrets.nix; in
     direnv.enableZshIntegration = true;
     evince.enable = true;
     firefox.enable = true;
+    fzf = {
+      fuzzyCompletion = true;
+      keybindings = true;
+    };
     git.enable = true;
     git.lfs.enable = true;
     hyprland = {
