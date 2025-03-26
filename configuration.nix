@@ -43,6 +43,7 @@ let secrets = import ./secrets.nix; in
 
   programs = {
     _1password.enable = true;
+    _1password-gui.enable = true;
     direnv.enable = true;
     direnv.enableZshIntegration = true;
     evince.enable = true;
