@@ -7,6 +7,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   bat
   bemoji
   bibata-cursors
+  broot
   btop
   catppuccin-cursors.latteDark
   chromium
@@ -39,6 +40,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   swaynotificationcenter
   tmate
   tofi
+  tokei
   traceroute
   tree
   unzip
