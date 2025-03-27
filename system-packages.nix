@@ -16,6 +16,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   dig
   direnv
   dstat
+  eza
   fd
   file
   fzf
