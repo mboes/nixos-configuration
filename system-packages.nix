@@ -43,6 +43,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   tofi
   tokei
   traceroute
+  trash-cli
   tree
   unzip
   vlc
