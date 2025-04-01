@@ -121,6 +121,13 @@ let secrets = import ./secrets.nix; in
     '';
     udisks2.enable = true;
     upower.enable = true;
+    xserver.xkb.extraLayouts = {
+      mylayout = {
+        description = "My custom xkb layout";
+        languages = ["eng"];
+        symbolsFile = ./home-row-arrows.xkb;
+      };
+    };
   };
 
   virtualisation.podman.enable = true;
