@@ -114,8 +114,9 @@ let secrets = import ./secrets.nix; in
     };
     resolved.enable = true;
     udev.extraRules = ''
-      # Workaround USB suspend not working for Logitech G500 mouse.
+      # Workaround USB suspend not working for Logitech G500/G502 mice.
       SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c068", ATTR{power/autosuspend}="-1"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c099", ATTR{power/autosuspend}="-1"
       # Prevent GoPro from connecting. Should only charge.
       SUBSYSTEM=="usb", ATTR{idVendor}=="2672", ATTR{idProduct}=="000d", ATTR{authorized}="0"
     '';
