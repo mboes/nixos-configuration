@@ -29,6 +29,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   (hunspellWithDicts dicts)
   imv
   jq
+  keymapp
   mpv
   nmap
   obsidian
