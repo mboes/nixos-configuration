@@ -47,6 +47,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   trash-cli
   tree
   unzip
+  usbutils
   vlc
   whois
   wl-clipboard
