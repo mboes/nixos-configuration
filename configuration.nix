@@ -33,6 +33,7 @@
 
   hardware.bluetooth.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.keyboard.zsa.enable = true;
 
   powerManagement.powertop.enable = true;
 
