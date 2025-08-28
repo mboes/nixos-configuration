@@ -15,7 +15,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   delta
   dig
   direnv
-  dstat
+  dool
   eza
   fd
   file
