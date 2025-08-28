@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 
-let secrets = import ./secrets.nix; in
 {
   boot = {
     tmp.cleanOnBoot = true;
@@ -22,10 +21,6 @@ let secrets = import ./secrets.nix; in
 
   console.keyMap = "dvorak";
   i18n.defaultLocale = "fr_FR.UTF-8";
-
-  time.timeZone = secrets.timezone;
-  location.latitude = secrets.latitude;
-  location.longitude = secrets.longitude;
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -166,16 +161,6 @@ let secrets = import ./secrets.nix; in
   };
 
   nix = {
-    buildMachines = secrets.buildMachines;
-    settings = {
-      trusted-substituters = [
-        "http://cache.nixos.org"
-        "http://hydra.nixos.org"
-      ];
-      trusted-public-keys = [
-        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-      ];
-    };
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
