@@ -8,6 +8,7 @@ shell prompt of any existing NixOS instance:
 
 ```shell
 $ cd /path/to/this/repo
+$ nixos-rebuild build ".#$HOST"
 $ sudo nixos-rebuild switch ".#$HOST"
 ```
 
