@@ -27,6 +27,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   grim
   grimblast
   (hunspellWithDicts dicts)
+  impala
   imv
   jq
   keymapp

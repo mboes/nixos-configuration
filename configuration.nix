@@ -12,12 +12,8 @@
     zfs.requestEncryptionCredentials = true;
   };
 
-  networking = rec {
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-    };
-  };
+  networking.useNetworkd = true;
+  networking.wireless.iwd.enable = true;
 
   console.keyMap = "dvorak";
   i18n.defaultLocale = "fr_FR.UTF-8";
