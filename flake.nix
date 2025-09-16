@@ -8,6 +8,7 @@
   outputs = { self, nixpkgs, secrets }: {
     nixosConfigurations.quito = nixpkgs.lib.nixosSystem {
       modules = [
+        secrets.nixosModules.default
         ./configuration.nix
         ./devices/quito/hardware-configuration.nix
       ];
