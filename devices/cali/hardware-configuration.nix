@@ -37,6 +37,8 @@
 
   swapDevices = [ { label = "swap"; } ];
 
+  console.keyMap = "dvorak";
+
   networking.hostName = "cali";
   networking.hostId = "5c17e9f9";
 
