@@ -11,6 +11,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   btop
   catppuccin-cursors.latteDark
   chromium
+  comma
   curl
   delta
   dig
