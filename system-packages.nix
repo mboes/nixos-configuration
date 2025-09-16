@@ -17,6 +17,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   direnv
   dool
   eza
+  fastfetch
   fd
   file
   fzf
@@ -31,6 +32,7 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   imv
   jq
   keymapp
+  localsend
   mpv
   nmap
   obsidian
