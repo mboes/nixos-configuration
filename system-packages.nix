@@ -29,10 +29,14 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   grim
   grimblast
   (hunspellWithDicts dicts)
+  hyprpicker
+  hyprshot
+  hyprsunset
   impala
   imv
   jq
   keymapp
+  libqalculate
   localsend
   mpv
   nmap
@@ -40,10 +44,13 @@ let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
   pavucontrol
   pax-utils
   pciutils
+  pinta
   powertop
   pwgen
   ripgrep
+  satty
   swaynotificationcenter
+  swayosd
   tmate
   tofi
   tokei
