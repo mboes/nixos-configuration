@@ -54,6 +54,10 @@
     light.brightnessKeys.enable = true;
     mosh.enable = true;
     vim.enable = true;
+    walker = {
+      enable = true;
+      runAsService = true;
+    };
     waybar.enable = true;
     zsh = {
       enable = true;
