@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   boot = {
@@ -8,7 +13,10 @@
     };
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    supportedFilesystems = [ "exfat" "zfs" ];
+    supportedFilesystems = [
+      "exfat"
+      "zfs"
+    ];
     zfs.requestEncryptionCredentials = true;
   };
 
@@ -100,7 +108,10 @@
     hypridle.enable = true;
     openssh.enable = true;
     printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    printing.drivers = [
+      pkgs.gutenprint
+      pkgs.gutenprintBin
+    ];
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -158,7 +169,17 @@
     description = "Mathieu Boespflug";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "audio" "video" "docker" "podman" "vboxusers" "networkmanager" "scanner" "lp" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "video"
+      "docker"
+      "podman"
+      "vboxusers"
+      "networkmanager"
+      "scanner"
+      "lp"
+    ];
     shell = pkgs.zsh;
   };
 

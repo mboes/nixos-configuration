@@ -1,39 +1,48 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "tank/nixos/root";
-      fsType = "zfs";
-    };
+  fileSystems."/" = {
+    device = "tank/nixos/root";
+    fsType = "zfs";
+  };
 
-  fileSystems."/home" =
-    { device = "tank/nixos/home";
-      fsType = "zfs";
-    };
+  fileSystems."/home" = {
+    device = "tank/nixos/home";
+    fsType = "zfs";
+  };
 
-  fileSystems."/var/lib" =
-    { device = "tank/nixos/var/lib";
-      fsType = "zfs";
-    };
+  fileSystems."/var/lib" = {
+    device = "tank/nixos/var/lib";
+    fsType = "zfs";
+  };
 
-  fileSystems."/var/log" =
-    { device = "tank/nixos/var/log";
-      fsType = "zfs";
-    };
+  fileSystems."/var/log" = {
+    device = "tank/nixos/var/log";
+    fsType = "zfs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1B5B-AE28";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/1B5B-AE28";
+    fsType = "vfat";
+  };
 
   swapDevices = [ { label = "swap"; } ];
 

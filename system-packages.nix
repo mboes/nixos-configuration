@@ -1,8 +1,15 @@
 { pkgs }:
 
 with pkgs;
-let dicts = with hunspellDicts; [ en_GB-ize fr-classique el-gr ]; in
-[ adwaita-icon-theme
+let
+  dicts = with hunspellDicts; [
+    en_GB-ize
+    fr-classique
+    el-gr
+  ];
+in
+[
+  adwaita-icon-theme
   baobab
   bat
   bemoji
