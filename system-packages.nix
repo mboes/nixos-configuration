@@ -7,6 +7,20 @@ let
     fr-classique
     el-gr
   ];
+  chatgpt = makeDesktopItem {
+    name = "chatgpt";
+    desktopName = "ChatGPT";
+    exec = "${chromium}/bin/chromium --app=https://chat.openai.com";
+    icon = "chromium";
+    categories = [ "Network" "ArtificialIntelligence" ];
+  };
+  gemini = makeDesktopItem {
+    name = "gemini";
+    desktopName = "Gemini";
+    exec = "${chromium}/bin/chromium --app=https://gemini.google.com";
+    icon = "chromium";
+    categories = [ "Network" "ArtificialIntelligence" ];
+  };
 in
 [
   adwaita-icon-theme
@@ -17,6 +31,7 @@ in
   broot
   btop
   catppuccin-cursors.latteDark
+  chatgpt
   chromium
   comma
   curl
@@ -29,6 +44,7 @@ in
   fd
   file
   fzf
+  gemini
   gh
   ghostty
   gimp
