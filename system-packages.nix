@@ -12,14 +12,20 @@ let
     desktopName = "ChatGPT";
     exec = "${chromium}/bin/chromium --app=https://chat.openai.com";
     icon = "chromium";
-    categories = [ "Network" "ArtificialIntelligence" ];
+    categories = [
+      "Network"
+      "ArtificialIntelligence"
+    ];
   };
   gemini = makeDesktopItem {
     name = "gemini";
     desktopName = "Gemini";
     exec = "${chromium}/bin/chromium --app=https://gemini.google.com";
     icon = "chromium";
-    categories = [ "Network" "ArtificialIntelligence" ];
+    categories = [
+      "Network"
+      "ArtificialIntelligence"
+    ];
   };
 in
 [
