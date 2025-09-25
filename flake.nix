@@ -6,8 +6,12 @@
     secrets.url = "git+ssh://git@github.com/mboes/nixos-configuration-secrets";
     systems.url = "github:nix-systems/default";
 
-    # Walker as a flake input until it becomes part of Nixpkgs.
+    # Flake inputs until they become part of Nixpkgs.
     walker.url = "github:abenz1267/walker";
+    walker.inputs.systems.follows = "systems";
+    wiremix.url = "github:tsowell/wiremix";
+    wiremix.inputs.nixpkgs.follows = "nixpkgs";
+    wiremix.inputs.systems.follows = "systems";
   };
   outputs =
     {
@@ -16,12 +20,14 @@
       secrets,
       systems,
       walker,
+      wiremix,
       ...
     }:
     let
       myModules = deviceConfig: [
         secrets.nixosModules.default
         walker.nixosModules.default
+        ({ config.environment.systemPackages = [ wiremix.packages.x86_64-linux.default ]; })
         ./configuration.nix
         deviceConfig
       ];

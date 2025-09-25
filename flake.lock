@@ -72,7 +72,8 @@
         "nixpkgs": "nixpkgs",
         "secrets": "secrets",
         "systems": "systems",
-        "walker": "walker"
+        "walker": "walker",
+        "wiremix": "wiremix"
       }
     },
     "secrets": {
@@ -120,26 +121,13 @@
         "type": "github"
       }
     },
-    "systems_3": {
-      "locked": {
-        "lastModified": 1689347949,
-        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "type": "github"
-      }
-    },
     "walker": {
       "inputs": {
         "elephant": "elephant",
         "nixpkgs": "nixpkgs_3",
-        "systems": "systems_3"
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1758354906,
@@ -152,6 +140,29 @@
       "original": {
         "owner": "abenz1267",
         "repo": "walker",
+        "type": "github"
+      }
+    },
+    "wiremix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758254107,
+        "narHash": "sha256-EcrMe1WbxD9id6JhvmaHQfW+mPjzrAqqeZ47Xp3sRoc=",
+        "owner": "tsowell",
+        "repo": "wiremix",
+        "rev": "05a40ca2a147ce3e015802acc62b2e7bb3711bde",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tsowell",
+        "repo": "wiremix",
         "type": "github"
       }
     }
