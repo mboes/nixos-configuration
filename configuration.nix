@@ -108,6 +108,7 @@
     hypridle.enable = true;
     openssh.enable = true;
     printing.enable = true;
+    printing.stateless = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
