@@ -108,10 +108,6 @@
     hypridle.enable = true;
     openssh.enable = true;
     printing.enable = true;
-    printing.drivers = [
-      pkgs.gutenprint
-      pkgs.gutenprintBin
-    ];
     pipewire = {
       enable = true;
       alsa.enable = true;
