@@ -67,6 +67,7 @@ in
   keymapp
   libqalculate
   localsend
+  jujutsu
   mpv
   nmap
   obsidian
