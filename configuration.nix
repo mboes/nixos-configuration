@@ -89,7 +89,7 @@
     emacs = {
       enable = true;
       defaultEditor = true;
-      package = pkgs.emacs30-pgtk;
+      package = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [epkgs.jinx]);
     };
     fwupd.enable = true;
     greetd = {
