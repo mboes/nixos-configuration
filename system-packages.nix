@@ -2,11 +2,6 @@
 
 with pkgs;
 let
-  dicts = with hunspellDicts; [
-    en_GB-ize
-    fr-classique
-    el-gr
-  ];
   chatgpt = makeDesktopItem {
     name = "chatgpt";
     desktopName = "ChatGPT";
@@ -57,7 +52,10 @@ in
   gnome-calculator
   grim
   grimblast
-  (hunspellWithDicts dicts)
+  hunspell
+  hunspellDicts.en_GB-ize
+  hunspellDicts.fr-classique
+  hunspellDicts.el-gr
   hyprpicker
   hyprshot
   hyprsunset
