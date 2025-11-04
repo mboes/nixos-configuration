@@ -68,11 +68,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1759356851,
-        "narHash": "sha256-xWd1NP/tVWB1HBJAXzCGVoTY3cmZoskAM79YlsEb3CA=",
+        "lastModified": 1762244318,
+        "narHash": "sha256-FObNapvkD8iGEMNbu59qx6LSc+RlpOtocquOBouS9VI=",
         "ref": "refs/heads/main",
-        "rev": "2d3dfc2eac461cee4ef13def6630aab9dfbb1f34",
-        "revCount": 3,
+        "rev": "87738029e7a3b36b92331bdec5ab18c4655a7f97",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/mboes/nixos-configuration-secrets"
       },
