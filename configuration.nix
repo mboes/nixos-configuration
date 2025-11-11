@@ -160,6 +160,9 @@
   security.rtkit.enable = true;
   security.sudo.enable = true;
 
+  xdg.terminal-exec.enable = true;
+  xdg.terminal-exec.settings.default = [ "com.mitchellh.ghossty.desktop" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.mboes = {
     description = "Mathieu Boespflug";
