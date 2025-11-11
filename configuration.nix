@@ -25,9 +25,13 @@
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    builders-use-substitutes = true
+    use-xdg-base-directories = true
+  '';
+
+  nixpkgs.config.allowUnfree = true;
 
   environment = {
     sessionVariables.NIXOS_OZONE_WL = 1;
@@ -173,13 +177,5 @@
       "lp"
     ];
     shell = pkgs.zsh;
-  };
-
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      builders-use-substitutes = true
-      use-xdg-base-directories = true
-    '';
   };
 }
