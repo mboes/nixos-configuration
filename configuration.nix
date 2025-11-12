@@ -57,6 +57,7 @@
     };
     git.enable = true;
     git.lfs.enable = true;
+    gpu-screen-recorder.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
