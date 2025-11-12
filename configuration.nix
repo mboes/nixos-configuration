@@ -143,14 +143,14 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      fira-code
-      fira-code-symbols
       font-awesome
-      inconsolata
-      iosevka
-      jetbrains-mono
+      nerd-fonts.fira-code
+      nerd-fonts.inconsolata
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-emoji
+      noto-fonts-extra
       orbitron
       roboto
       terminus_font
