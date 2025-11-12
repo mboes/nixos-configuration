@@ -63,9 +63,11 @@ in
   imv
   jq
   keymapp
+  libnotify
   libqalculate
   localsend
   jujutsu
+  mako
   mpv
   nmap
   obsidian
@@ -77,7 +79,6 @@ in
   pwgen
   ripgrep
   satty
-  swaynotificationcenter
   swayosd
   tmate
   tofi
