@@ -1,7 +1,7 @@
 {
   description = "My NixOS configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     # This repository is private.
     secrets.url = "git+ssh://git@github.com/mboes/nixos-configuration-secrets";
     systems.url = "github:nix-systems/default";

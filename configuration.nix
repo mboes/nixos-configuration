@@ -150,8 +150,7 @@
       nerd-fonts.iosevka
       nerd-fonts.jetbrains-mono
       noto-fonts
-      noto-fonts-emoji
-      noto-fonts-extra
+      noto-fonts-color-emoji
       orbitron
       roboto
       terminus_font
