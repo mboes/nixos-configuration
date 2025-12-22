@@ -89,6 +89,7 @@ in
   unzip
   usbutils
   vlc
+  wiremix
   whois
   wl-clipboard
   zotero
