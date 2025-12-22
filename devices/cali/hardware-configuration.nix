@@ -22,6 +22,7 @@
   fileSystems."/" = {
     device = "tank/nixos/root";
     fsType = "zfs";
+    options = [ "zfsutil" ];
   };
 
   fileSystems."/home" = {
@@ -32,11 +33,13 @@
   fileSystems."/var/lib" = {
     device = "tank/nixos/var/lib";
     fsType = "zfs";
+    options = [ "zfsutil" ];
   };
 
   fileSystems."/var/log" = {
     device = "tank/nixos/var/log";
     fsType = "zfs";
+    options = [ "zfsutil" ];
   };
 
   fileSystems."/boot" = {
