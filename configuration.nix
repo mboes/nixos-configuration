@@ -20,10 +20,35 @@
     zfs.requestEncryptionCredentials = true;
   };
 
-  networking.useNetworkd = true;
-  networking.wireless.iwd.enable = true;
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = 1;
+    systemPackages = import ./system-packages.nix { inherit pkgs; };
+  };
+
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      font-awesome
+      nerd-fonts.fira-code
+      nerd-fonts.inconsolata
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
+      noto-fonts
+      noto-fonts-color-emoji
+      orbitron
+      roboto
+      terminus_font
+    ];
+  };
+
+  hardware.bluetooth.enable = true;
+  hardware.cpu.intel.updateMicrocode = true;
+  hardware.keyboard.zsa.enable = true;
 
   i18n.defaultLocale = "fr_FR.UTF-8";
+
+  networking.useNetworkd = true;
+  networking.wireless.iwd.enable = true;
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -32,15 +57,6 @@
   '';
 
   nixpkgs.config.allowUnfree = true;
-
-  environment = {
-    sessionVariables.NIXOS_OZONE_WL = 1;
-    systemPackages = import ./system-packages.nix { inherit pkgs; };
-  };
-
-  hardware.bluetooth.enable = true;
-  hardware.cpu.intel.updateMicrocode = true;
-  hardware.keyboard.zsa.enable = true;
 
   powerManagement.powertop.enable = true;
 
@@ -129,6 +145,9 @@
     upower.enable = true;
   };
 
+  security.rtkit.enable = true;
+  security.sudo.enable = true;
+
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
   virtualisation.podman.dockerSocket.enable = true;
@@ -140,28 +159,6 @@
       runroot = "/run/containers/storage";
     };
   };
-
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      font-awesome
-      nerd-fonts.fira-code
-      nerd-fonts.inconsolata
-      nerd-fonts.iosevka
-      nerd-fonts.jetbrains-mono
-      noto-fonts
-      noto-fonts-color-emoji
-      orbitron
-      roboto
-      terminus_font
-    ];
-  };
-
-  security.rtkit.enable = true;
-  security.sudo.enable = true;
-
-  xdg.terminal-exec.enable = true;
-  xdg.terminal-exec.settings.default = [ "com.mitchellh.ghossty.desktop" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.mboes = {
@@ -181,4 +178,7 @@
     ];
     shell = pkgs.zsh;
   };
+
+  xdg.terminal-exec.enable = true;
+  xdg.terminal-exec.settings.default = [ "com.mitchellh.ghossty.desktop" ];
 }
