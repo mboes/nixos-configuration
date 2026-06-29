@@ -136,7 +136,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "Hyprland";
+          command = "uwsm start -eD Hyprland hyprland.desktop";
           user = "mboes";
         };
         default_session = initial_session;
