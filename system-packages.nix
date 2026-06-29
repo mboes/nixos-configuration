@@ -65,7 +65,6 @@ in
   keymapp
   libnotify
   libqalculate
-  localsend
   jujutsu
   mako
   mpv
