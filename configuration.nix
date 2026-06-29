@@ -172,6 +172,27 @@
   systemd.user.services.elephant.environment.PATH =
     lib.mkForce "/run/current-system/sw/bin:/run/wrappers/bin:/bin";
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.extraUsers.mboes = {
+    description = "Mathieu Boespflug";
+    isNormalUser = true;
+    uid = 1000;
+    extraGroups = [
+      "audio"
+      "docker"
+      "kvm"
+      "libvirtd"
+      "lp"
+      "networkmanager"
+      "podman"
+      "scanner"
+      "vboxusers"
+      "video"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
+  };
+
   virtualisation.libvirtd = {
     enable = true;
     qemu.swtpm.enable = true;
@@ -187,25 +208,6 @@
       graphroot = "/var/lib/containers/storage";
       runroot = "/run/containers/storage";
     };
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.extraUsers.mboes = {
-    description = "Mathieu Boespflug";
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [
-      "wheel"
-      "audio"
-      "video"
-      "docker"
-      "podman"
-      "vboxusers"
-      "networkmanager"
-      "scanner"
-      "lp"
-    ];
-    shell = pkgs.zsh;
   };
 
   xdg.terminal-exec.enable = true;
