@@ -17,6 +17,7 @@
       "exfat"
       "zfs"
     ];
+    zfs.forceImportRoot = false;
     zfs.requestEncryptionCredentials = true;
   };
 
