@@ -64,6 +64,17 @@
   programs = {
     _1password.enable = true;
     _1password-gui.enable = true;
+    dconf = {
+      enable = true;
+      profiles.user = {
+        enableUserDb = false;   # Disable ~/.config/dconf/user
+        databases = [
+          {
+            settings."org/gnome/desktop/interface".gtk-enable-primary-paste = true;
+          }
+        ];
+      };
+    };
     direnv.enable = true;
     direnv.enableZshIntegration = true;
     evince.enable = true;
