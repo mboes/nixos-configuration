@@ -48,6 +48,7 @@
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   networking.useNetworkd = true;
   networking.wireless.iwd.enable = true;
 
@@ -97,6 +98,7 @@
     };
     mosh.enable = true;
     vim.enable = true;
+    virt-manager.enable = true;
     waybar.enable = true;
     zsh = {
       enable = true;
@@ -161,6 +163,11 @@
   security.rtkit.enable = true;
   security.sudo.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.swtpm.enable = true;
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+  };
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
   virtualisation.podman.dockerSocket.enable = true;

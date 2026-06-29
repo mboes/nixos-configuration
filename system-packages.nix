@@ -88,6 +88,7 @@ in
   tree
   unzip
   usbutils
+  virtio-win
   vlc
   walker
   wiremix
