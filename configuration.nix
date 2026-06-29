@@ -22,6 +22,9 @@
   };
 
   environment = {
+    etc."libvirt/network.conf".text = ''
+      firewall_backend = "nftables"
+    '';
     sessionVariables.NIXOS_OZONE_WL = 1;
     systemPackages = import ./system-packages.nix { inherit pkgs; };
   };
@@ -49,6 +52,7 @@
   i18n.defaultLocale = "fr_FR.UTF-8";
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.nftables.enable = true;
   networking.useNetworkd = true;
   networking.wireless.iwd.enable = true;
 
