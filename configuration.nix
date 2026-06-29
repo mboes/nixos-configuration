@@ -72,7 +72,7 @@
     dconf = {
       enable = true;
       profiles.user = {
-        enableUserDb = false;   # Disable ~/.config/dconf/user
+        enableUserDb = false; # Disable ~/.config/dconf/user
         databases = [
           {
             settings."org/gnome/desktop/interface".gtk-enable-primary-paste = true;
@@ -130,7 +130,7 @@
     emacs = {
       enable = true;
       defaultEditor = true;
-      package = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [epkgs.jinx]);
+      package = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [ epkgs.jinx ]);
     };
     fwupd.enable = true;
     greetd = {
