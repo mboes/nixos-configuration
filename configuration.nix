@@ -126,6 +126,7 @@
       publish.enable = true;
       publish.userServices = true;
     };
+    elephant.enable = true;
     emacs = {
       enable = true;
       defaultEditor = true;
@@ -166,6 +167,10 @@
 
   security.rtkit.enable = true;
   security.sudo.enable = true;
+
+  # XXX Temporary workaround so elephant can find /bin/sh
+  systemd.user.services.elephant.environment.PATH =
+    lib.mkForce "/run/current-system/sw/bin:/run/wrappers/bin:/bin";
 
   virtualisation.libvirtd = {
     enable = true;
