@@ -1,15 +1,11 @@
 {
   description = "My NixOS configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-    # This repository is private.
-    secrets.url = "git+ssh://git@github.com/mboes/nixos-configuration-secrets";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     systems.url = "github:nix-systems/default";
 
-    # Flake inputs until they become part of Nixpkgs.
-    walker.url = "github:abenz1267/walker";
-    walker.inputs.nixpkgs.follows = "nixpkgs";
-    walker.inputs.systems.follows = "systems";
+    # This repository is private.
+    secrets.url = "git+ssh://git@github.com/mboes/nixos-configuration-secrets";
   };
   outputs =
     {
@@ -17,13 +13,11 @@
       nixpkgs,
       secrets,
       systems,
-      walker,
       ...
     }:
     let
       myModules = deviceConfig: [
         secrets.nixosModules.default
-        walker.nixosModules.default
         ./configuration.nix
         deviceConfig
       ];

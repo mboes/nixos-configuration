@@ -29,6 +29,7 @@ in
   bat
   bemoji
   bibata-cursors
+  brightnessctl
   broot
   btop
   catppuccin-cursors.latteDark
@@ -88,6 +89,7 @@ in
   unzip
   usbutils
   vlc
+  walker
   wiremix
   whois
   wl-clipboard

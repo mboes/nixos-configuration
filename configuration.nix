@@ -91,15 +91,12 @@
       withUWSM = true;
     };
     hyprlock.enable = true;
-    light.enable = true;
-    light.brightnessKeys.enable = true;
     localsend = {
       enable = true;
       openFirewall = true;
     };
     mosh.enable = true;
     vim.enable = true;
-    walker.enable = true;
     waybar.enable = true;
     zsh = {
       enable = true;
