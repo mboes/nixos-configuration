@@ -107,6 +107,10 @@
     vim.enable = true;
     virt-manager.enable = true;
     waybar.enable = true;
+    winbox = {
+      enable = true;
+      openFirewall = true;
+    };
     zsh = {
       enable = true;
       enableGlobalCompInit = false;
