@@ -51,7 +51,10 @@
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.firewall.trustedInterfaces = [
+    "tailscale0"
+    "virbr0"
+  ];
   networking.nftables.enable = true;
   networking.useNetworkd = true;
   networking.wireless.iwd.enable = true;
@@ -152,6 +155,12 @@
       pulse.enable = true;
     };
     resolved.enable = true;
+    tailscale = {
+      enable = true;
+      extraSetFlags = [ "--accept-routes" ];
+      disableUpstreamLogging = true;
+      useRoutingFeatures = "client";
+    };
     udev.extraRules = ''
       # Workaround USB suspend not working for Logitech G500/G502 mice.
       SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c068", ATTR{power/autosuspend}="-1"
